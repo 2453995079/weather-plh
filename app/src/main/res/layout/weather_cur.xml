@@ -12,7 +12,7 @@
     android:layout_height="wrap_content"
     android:layout_alignParentLeft="true"
     android:layout_alignParentTop="true"
-    android:layout_marginLeft="15.0dip"
+    android:layout_marginLeft="12.0dip"
     android:singleLine="true"
     android:text="北京"
     android:textColor="@android:color/white"
@@ -24,7 +24,7 @@
     android:layout_height="wrap_content"
     android:layout_alignParentLeft="true"
     android:layout_below="@id/city"
-    android:layout_marginLeft="15.0dip"
+    android:layout_marginLeft="12.0dip"
     android:layout_marginTop="5dip"
     android:singleLine="true"
     android:text="今天18:25发布"
@@ -37,9 +37,21 @@
     android:layout_height="wrap_content"
     android:layout_alignParentLeft="true"
     android:layout_below="@id/time"
-    android:layout_marginLeft="15.0dip"
+    android:layout_marginLeft="12.0dip"
     android:singleLine="true"
     android:text="湿度:57%"
     android:textColor="@android:color/white"
     android:textSize="15.0sp" />
+    <TextView
+        android:id="@+id/temperature"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/humidity"
+        android:layout_marginLeft="12.0dip"
+        android:singleLine="true"
+        android:text="温度:15℃"
+        android:textColor="@android:color/white"
+        android:textSize="15.0sp" />
+
 </RelativeLayout>
