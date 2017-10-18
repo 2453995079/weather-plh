@@ -1,4 +1,5 @@
 package cn.edu.pku.penglinhan.weatherapplication;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.app.Activity;
 import android.content.SharedPreferences;
@@ -27,7 +28,7 @@ import cn.edu.pku.penglinhan.util.NetUtil;
 public class MainActivity extends Activity implements View.OnClickListener {
 
     private ImageView mUpdateBtn;
-
+    private ImageView mCitySelect;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,11 +45,16 @@ public class MainActivity extends Activity implements View.OnClickListener {
             Log.d("myWeather", "网络挂了");
             Toast.makeText(MainActivity.this,"网络挂了！", Toast.LENGTH_LONG).show();
         }
+        mCitySelect=(ImageView) findViewById(R.id.title_city_manager);
+        mCitySelect.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-
+        if(view.getId()==R.id.title_city_manager){
+            Intent i=new Intent(this, select_city.class);
+            startActivity(i);
+        }
         if (view.getId() == R.id.title_update_btn){
 
             SharedPreferences sharedPreferences = getSharedPreferences("config", MODE_PRIVATE);
