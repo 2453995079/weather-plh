@@ -59,6 +59,7 @@ public class MyApplication extends Application{
     public static MyApplication getInstance(){
         return  mApplication;
     }
+    /*创建打开数据库的方法*/
     private CityDB openCityDB() {
         String path = "/data"
                 + Environment.getDataDirectory().getAbsolutePath()

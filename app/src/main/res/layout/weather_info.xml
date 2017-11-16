@@ -6,6 +6,13 @@
     <include
         android:id="@+id/title"
         layout="@layout/title_bar"/>
+    /*布局添加图片，设定位置
+    layout_width：宽
+    layout_height：高
+    layout_below：低于那个布局
+    orientation：该属性不设置时默认为horizontal。此时第一个控件的宽度若设置成“fill_parent”,后面添加的组件将都无法看到。因此使用该布局的时候要注意设置android:orientation="vertical"。
+    include layout="@layout/weather_cur"：引用别的布局xml
+    */
     <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"

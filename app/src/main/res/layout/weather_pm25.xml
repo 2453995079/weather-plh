@@ -8,6 +8,11 @@ android:layout_alignParentRight="true"
 android:layout_alignParentTop="true"
 android:orientation="vertical" >
 <!-- PM2.5详情 -->
+    /*paddingBottom 是指控件中内容距离控件底边距离。
+    textColor：文本颜色
+    textSize：文本尺寸
+    src：连接添加图片的地址
+    */
 <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"

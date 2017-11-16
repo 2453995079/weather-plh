@@ -5,7 +5,7 @@ import android.net.NetworkInfo;
 /**
  * Created by Administrator on 2017/10/11 0011.
  */
-
+/*用来判定是否能够连接网络的类*/
 public class NetUtil {
     public static final int NETWORN_NONE = 0;
     public static final int NETWORN_WIFI = 1;
