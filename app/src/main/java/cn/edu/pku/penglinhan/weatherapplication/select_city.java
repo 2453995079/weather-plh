@@ -3,6 +3,9 @@ package cn.edu.pku.penglinhan.weatherapplication;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -23,8 +26,14 @@ public class select_city extends Activity implements View.OnClickListener {
     private ImageView mBackBtn;
     private ListView mList;
     private String[] city_List;
-    private List<City> cityList;
+    private List<City> cityList,filterDataList;
     private List<String>f;
+    private ClearEditText mClearEditText;
+    private ArrayAdapter<String>adapter;
+
+    public select_city() {
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +41,28 @@ public class select_city extends Activity implements View.OnClickListener {
         initView();
         mBackBtn = (ImageView) findViewById(R.id.title_back);
         mBackBtn.setOnClickListener(this);
+        mClearEditText = (ClearEditText) findViewById(R.id.search_city);
+        mClearEditText.addTextChangedListener(new TextWatcher() {
+                                                  @Override
+                                                  public void beforeTextChanged(CharSequence charSequence, int s, int start, int after) {
+
+                                                  }
+
+                                                  @Override
+                                                  public void onTextChanged(CharSequence s, int start, int before, int count) {
+                                                      filterData(s.toString());
+                                                      mList.setAdapter(adapter);
+
+                                                  }
+
+                                                  @Override
+                                                  public void afterTextChanged(Editable s) {
+
+                                                  }
+                                              }
+        );
     }
+
 
     public void onClick(View v) {
         switch (v.getId()) {
@@ -49,28 +79,46 @@ public class select_city extends Activity implements View.OnClickListener {
     }
 
     private void initView() {
-        City filterDateList;
         mList = (ListView) findViewById(R.id.title_list);
         MyApplication myApplication=(MyApplication)getApplication();
         cityList=myApplication.getCityList();
-        List<String> f = new ArrayList<String>();
+        f = new ArrayList<String>();
         for(City city:cityList){
             f.add(city.getCity()+" "+city.getNumber());
         }
         int size=f.size();
         city_List=(String[])f.toArray(new String[size]);
-        ArrayAdapter<String>adapter=new ArrayAdapter<String>(select_city.this,android.R.layout.simple_list_item_1,city_List);
+        adapter=new ArrayAdapter<String>(select_city.this,android.R.layout.simple_list_item_1,city_List);
         mList.setAdapter(adapter);
         mList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                City city =cityList.get(position);
+                String b = city_List[position].substring(city_List[position].indexOf(" ")+1,city_List[position].length());
                 Intent i =new Intent();
-                i.putExtra("cityCode",city.getNumber());
+                i.putExtra("cityCode",b);
                 setResult(RESULT_OK,i);
                 finish();
                ;
             }
         });
+    }
+    private void filterData(String filterStr){;
+        f = new ArrayList<String>();
+        Log.d("Filter",filterStr);
+        if(TextUtils.isEmpty(filterStr)){
+            for(City city :cityList){
+                f.add(city.getCity()+" "+city.getNumber());
+            }
+        }else{
+            for(City city:cityList){
+                if(city.getCity().indexOf(filterStr.toString())!=-1){
+                    f.add(city.getCity()+" "+city.getNumber());
+                }
+            }
+        }
+        int size=f.size();
+        city_List=(String[])f.toArray(new String[size]);
+        adapter=new ArrayAdapter<String>(select_city.this,android.R.layout.simple_list_item_1,city_List);
+
     }
 }

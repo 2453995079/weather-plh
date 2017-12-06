@@ -37,7 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/title_top">
 
-        <EditText
+        <cn.edu.pku.penglinhan.weatherapplication.ClearEditText
             android:id="@+id/search_city"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
