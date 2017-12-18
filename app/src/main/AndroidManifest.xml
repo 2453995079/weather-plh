@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN" />/*用来首先显示的activity,程序的入口*/
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
