@@ -43,7 +43,7 @@ public class MainActivity extends Activity implements View.OnClickListener,ViewP
     private TextView cityTv, timeTv, humidityTv, weekTv, pmDataTv, pmQualityTv,
             temperatureTv, climateTv, windTv, city_name_Tv,temperaturemon;
     private TextView fengli1,fengli2,fengli3,fengli4,fengli5,fengli6,date1,date2,date3,date4,date5,date6,tem1,tem2,tem3,tem4,tem5,tem6,type1,type2,type3,type4,type5,type6;
-    private ImageView weatherImg, pmImg;
+    private ImageView weatherImg, pmImg,img1,img2,img3,img4,img5,img6;
     private ViewPagerAdapter vpAdapter;
     private ViewPager vp;
     private List<View> views;
@@ -425,6 +425,12 @@ public class MainActivity extends Activity implements View.OnClickListener,ViewP
         fengli4=(TextView) views.get(1).findViewById(R.id.wind4);
         fengli5=(TextView) views.get(1).findViewById(R.id.wind5);
         fengli6=(TextView) views.get(1).findViewById(R.id.wind6);
+        img1=(ImageView)views.get(0).findViewById(R.id.weather_img1);
+        img2=(ImageView)views.get(0).findViewById(R.id.weather_img2);
+        img3=(ImageView)views.get(0).findViewById(R.id.weather_img3);
+        img4=(ImageView)views.get(1).findViewById(R.id.weather_img4);
+        img5=(ImageView)views.get(1).findViewById(R.id.weather_img5);
+        img6=(ImageView)views.get(1).findViewById(R.id.weather_img6);
 
         city_name_Tv.setText("N/A");
         cityTv.setText("N/A");
@@ -482,6 +488,14 @@ public class MainActivity extends Activity implements View.OnClickListener,ViewP
         fengli4.setText(todayWeather.getFengli2());
         fengli5.setText(todayWeather.getFengli3());
         fengli6.setText(todayWeather.getFengli4());
+        typepanding(climateTv,weatherImg);
+        typepanding(type1,img1);
+        typepanding(type2,img2);
+        typepanding(type3,img3);
+        typepanding(type4,img4);
+        typepanding(type5,img5);
+        typepanding(type6,img6);
+
         Toast.makeText(MainActivity.this,"更新成功！",Toast.LENGTH_SHORT).show();
 
     }
@@ -504,6 +518,32 @@ public class MainActivity extends Activity implements View.OnClickListener,ViewP
 
     @Override
     public void onPageScrollStateChanged(int state) {
+
+    }
+    public void typepanding(TextView textview,ImageView imageview){
+        if(textview.getText().toString().equals("晴")) imageview.setImageDrawable(getResources().getDrawable(R.drawable.biz_plugin_weather_qing));
+        else if(textview.getText().toString().equals("暴雪"))imageview.setImageDrawable(getResources().getDrawable(R.drawable.biz_plugin_weather_baoxue));
+        else if(textview.getText().toString().equals("暴雨"))imageview.setImageDrawable(getResources().getDrawable(R.drawable.biz_plugin_weather_baoyu));
+        else if(textview.getText().toString().equals("大暴雨"))imageview.setImageDrawable(getResources().getDrawable(R.drawable.biz_plugin_weather_dabaoyu));
+        else if(textview.getText().toString().equals("大雪"))imageview.setImageDrawable(getResources().getDrawable(R.drawable.biz_plugin_weather_daxue));
+        else if(textview.getText().toString().equals("大雨"))imageview.setImageDrawable(getResources().getDrawable(R.drawable.biz_plugin_weather_dayu));
+        else if(textview.getText().toString().equals("多云"))imageview.setImageDrawable(getResources().getDrawable(R.drawable.biz_plugin_weather_duoyun));
+        else if(textview.getText().toString().equals("雷阵雨"))imageview.setImageDrawable(getResources().getDrawable(R.drawable.biz_plugin_weather_leizhenyu));
+        else if(textview.getText().toString().equals("雷阵雨冰雹"))imageview.setImageDrawable(getResources().getDrawable(R.drawable.biz_plugin_weather_leizhenyubingbao));
+        else if(textview.getText().toString().equals("沙尘暴"))imageview.setImageDrawable(getResources().getDrawable(R.drawable.biz_plugin_weather_shachenbao));
+        else if(textview.getText().toString().equals("特大暴雨"))imageview.setImageDrawable(getResources().getDrawable(R.drawable.biz_plugin_weather_tedabaoyu));
+        else if(textview.getText().toString().equals("雾"))imageview.setImageDrawable(getResources().getDrawable(R.drawable.biz_plugin_weather_wu));
+        else if(textview.getText().toString().equals("小雪"))imageview.setImageDrawable(getResources().getDrawable(R.drawable.biz_plugin_weather_xiaoxue));
+        else if(textview.getText().toString().equals("小雨"))imageview.setImageDrawable(getResources().getDrawable(R.drawable.biz_plugin_weather_xiaoyu));
+        else if(textview.getText().toString().equals("阴"))imageview.setImageDrawable(getResources().getDrawable(R.drawable.biz_plugin_weather_yin));
+        else if(textview.getText().toString().equals("雨加雪"))imageview.setImageDrawable(getResources().getDrawable(R.drawable.biz_plugin_weather_yujiaxue));
+        else if(textview.getText().toString().equals("阵雪"))imageview.setImageDrawable(getResources().getDrawable(R.drawable.biz_plugin_weather_zhenxue));
+        else if(textview.getText().toString().equals("阵雨"))imageview.setImageDrawable(getResources().getDrawable(R.drawable.biz_plugin_weather_zhenyu));
+        else if(textview.getText().toString().equals("中雪"))imageview.setImageDrawable(getResources().getDrawable(R.drawable.biz_plugin_weather_zhongxue));
+        else if(textview.getText().toString().equals("中雨"))imageview.setImageDrawable(getResources().getDrawable(R.drawable.biz_plugin_weather_zhongyu));
+
+
+
 
     }
 }

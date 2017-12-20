@@ -68,6 +68,7 @@ public class select_city extends Activity implements View.OnClickListener {
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.title_back:
+
                 /*返回的参数*/
                 /*Intent i = new Intent();
                 i.putExtra("cityCode", "101160101");
